@@ -1,0 +1,105 @@
+:root{
+  --kawa-green:#00e676;         /* accent */
+  --bg-1:#0c0d0e;
+  --bg-2:#111315;
+  --text:#e7e9ec;
+  --muted:#b3b8c2;
+}
+
+.kawa-header{
+  color:var(--text);
+  background: radial-gradient(1200px 400px at 60% -200px, #1a1d1f 0%, var(--bg-1) 40%, var(--bg-2) 100%);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: sticky; top:0; z-index: 40;
+}
+
+.kawa-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.kawa-brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight: 800; letter-spacing:.2px;
+  text-decoration:none; color:var(--text);
+}
+
+.kawa-nav{ display:flex; gap: 18px; justify-content:center; }
+.kawa-link{
+  position: relative;
+  padding: 10px 8px;
+  font-size: .92rem;
+  letter-spacing:.8px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.kawa-link:hover{ color: var(--text); }
+.kawa-link.is-active{
+  color: var(--text);
+}
+.kawa-link.is-active::after{
+  content:"";
+  position:absolute; left:8px; right:8px; bottom:4px;
+  height:2px; background: var(--kawa-green); border-radius: 2px;
+}
+
+/* Search pill */
+.kawa-search{
+  display:flex; align-items:center; gap:8px;
+  border:2px solid var(--kawa-green);
+  border-radius: 999px;
+  padding: 6px 10px 6px 14px;
+  background: #0f1113;
+  width: clamp(220px, 30vw, 420px);
+}
+.kawa-search input{
+  flex:1; min-width:0;
+  background:transparent; border:0; outline:0;
+  color:var(--text); font-size:.95rem;
+}
+.kawa-search button{
+  display:grid; place-items:center;
+  width:34px; height:34px; border-radius:999px;
+  border:0; background:transparent; color:var(--text); cursor:pointer;
+}
+.kawa-search:focus-within{
+  box-shadow: 0 0 0 3px rgba(0,230,118,.18);
+}
+
+/* Burger */
+.kawa-burger{
+  display:none; width:40px; height:40px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.1);
+  background: #0f1113; cursor:pointer; padding:9px;
+}
+.kawa-burger span{
+  display:block; height:2px; background:var(--text); margin:4px 0; border-radius:2px;
+}
+
+/* Mobile drawer */
+.kawa-drawer{
+  position: fixed; inset: 60px 0 auto 0;
+  translate: 0 -10px;
+  opacity:0; pointer-events:none;
+  transition: .22s ease;
+  background: #0f1113; border-bottom:1px solid rgba(255,255,255,.06);
+  padding: 10px 20px;
+}
+.kawa-drawer.open{ translate: 0 0; opacity:1; pointer-events:auto; }
+.kawa-drawer-link{
+  display:block; padding:12px 2px; color:var(--text); text-decoration:none;
+}
+.kawa-drawer-link:not(:last-child){ border-bottom:1px solid rgba(255,255,255,.06); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .kawa-nav{ display:none; }
+  .kawa-burger{ display:block; }
+  .kawa-inner{ grid-template-columns: auto 1fr auto; }
+  .kawa-search{ width: 100%; }
+}

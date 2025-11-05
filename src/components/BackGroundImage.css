@@ -1,0 +1,100 @@
+:root{
+  --kawa-green:#00e676;
+  --bg1:#0b0c0d; --bg2:#101214; --text:#e8ebf0; --muted:#b2b8c3;
+}
+
+/* Let the hero take the whole screen */
+.h2r-hero{
+  position: relative;
+  color: var(--text);
+  overflow: hidden;
+  width: 100vw;
+  min-height: 100svh; /* better than 100vh on mobile */
+  background:
+    radial-gradient(1200px 400px at 65% -200px, #1b1e20 0%, var(--bg1) 45%, var(--bg2) 100%);
+
+}
+
+/* Make the inner grid nearly full bleed but still centered */
+.h2r-inner{
+  width: min(1600px, 94vw);
+  margin: 0 auto;
+  padding: clamp(24px, 6vh, 48px) 20px;
+  display: grid;
+  grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+/* Bike can slightly overflow for drama */
+.h2r-bike{
+  width: 115%;
+  height: auto;
+  transform: translateX(-6%);
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,.55));
+}
+
+.h2r-copy{ max-width: 560px; }
+
+/* Remove all manual left margins 👇 */
+.h2r-brand{
+  display:flex; align-items:center; gap:10px;
+  color:var(--text); opacity:.95; margin-bottom:8px; font-weight:700;
+    margin-left: 100px;
+
+}
+
+.h2r-title{
+  font-size: clamp(44px, 6vw, 74px);
+  line-height: .95;
+  margin: 4px 0 14px;
+  font-weight: 900;
+  letter-spacing:.5px;
+  margin-left: 100px;
+}
+.h2r-title span{ color: var(--kawa-green); }
+
+.h2r-text{
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-size: clamp(14px, 1.2vw, 16px);
+    margin-left: 100px;
+
+}
+
+.h2r-cta{
+  padding: 12px 18px;
+  background: var(--kawa-green);
+  color: #051106;
+  border:0; border-radius: 10px;
+  font-weight: 800; letter-spacing:.4px;
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+    margin-left: 100px;
+
+}
+.h2r-cta:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,230,118,.25); }
+
+/* Ghost text scales with screen */
+.h2r-ghost{
+margin-top: -500px;
+  position:absolute; inset:0; pointer-events:none;
+  display:flex; align-items:center; justify-content:center;
+  gap: 10vw; opacity:.07; font-weight: 900; letter-spacing:2px;
+}
+.h2r-ghost-big{ font-size: 20vw; }
+.h2r-ghost-year{ font-size: 16vw; }
+
+
+
+
+/* Responsive */
+@media (max-width: 980px){
+  .h2r-inner{ grid-template-columns: 1fr; }
+  .h2r-bike{ transform: none; order: -1; width: 100%; }
+  .h2r-arrow{ right: 12px; width: 48px; height: 48px; }
+}
+
+/* Optional: ensure no default body margin blocks full-bleed */
+html, body, #root { height: 100%; }
+body { margin: 0; }

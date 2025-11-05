@@ -1,0 +1,62 @@
+.shiny-text {
+  display: inline-block;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+
+  /* shiny sweep */
+  color: transparent;
+  background:
+    linear-gradient(110deg,
+      rgba(255,255,255,.08) 10%,
+      rgba(255,255,255,.95) 35%,
+      rgba(255,255,255,0) 60%) no-repeat;
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+
+  animation-name: shiny-sweep;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* duration is controlled from inline style via your `speed` prop */
+}
+
+.shiny-text.disabled {
+  animation: none;
+  color: rgba(255,255,255,.88); /* graceful fallback if disabled */
+  -webkit-background-clip: initial;
+          background-clip: initial;
+}
+
+@keyframes shiny-sweep {
+  from { background-position: -150% 0; }
+  to   { background-position: 150% 0; }
+}
+
+/* Position preset for overlaying on the bike */
+.on-bike {
+  position: absolute;
+  top: 48%;
+  right: 48px;
+  font-size: clamp(28px, 7vw, 96px);
+  pointer-events: none;
+  mix-blend-mode: screen;    /* looks great on dark images */
+  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+  -webkit-text-stroke: 1px rgba(0,0,0,.25); /* legibility on bright parts */
+}
+
+/* BackGroundImage.css */
+.h2r-bike-wrap { position: relative; width: 100%; display: inline-block; }
+.h2r-bike {
+  width: 120%;
+  height: auto;
+  transform: translateX(-6%);
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,.55));
+}
+.on-bike {
+  position: absolute; bottom: 8%; left: 6%;
+  font-size: clamp(28px, 7vw, 96px);
+  pointer-events: none; mix-blend-mode: screen;
+  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+  -webkit-text-stroke: 1px rgba(0,0,0,.25);
+}
